@@ -4,7 +4,7 @@ import os
 # Load secrets from environment
 float_api_token = os.getenv("FLOAT_API_TOKEN")
 float_url = "https://api.float.com/v3/people"
-n8n_webhook_url = os.getenv("N8N_WEBHOOK_URL")
+n8n_people_webhook_url = os.getenv("N8N_PEOPLE_WEBHOOK_URL")
 
 # Auth headers
 headers = {
@@ -31,7 +31,7 @@ while True:
     page += 1
 
 # Send to n8n webhook
-response = requests.post(n8n_webhook_url, json=all_people)
+response = requests.post(n8n_people_webhook_url, json=all_people)
 
 # Confirm POST status
 if response.status_code == 200:
