@@ -4,7 +4,7 @@ import os
 # Load secrets from environment
 float_api_token = os.getenv("FLOAT_API_TOKEN")
 n8n_client_webhook_url = os.getenv("N8N_CLIENT_WEBHOOK_URL")
-float_url = "https://api.float.com/v3/timeoffs?page=1&per_page=50"
+float_url = "https://api.float.com/v3/clients?page=1&per_page=50"
 
 # Auth headers
 headers = {
@@ -26,7 +26,7 @@ webhook_response = requests.post(n8n_client_webhook_url, json=data)
 
 # Confirm POST status
 if webhook_response.status_code == 200:
-    print(f"✅ {len(data)} timeoffs sent to n8n successfully!")
+    print(f"✅ {len(data)} clients sent to n8n successfully!")
 else:
     print(f"❌ Failed to send data to n8n. Status code: {webhook_response.status_code}")
     print(webhook_response.text)
